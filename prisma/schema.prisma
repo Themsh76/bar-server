@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// npm install prisma --save-dev
+
+// npx prisma init --datasource-provider sqlite
+
+// Erstellt SQL Datei, die auf der DB ausgeführt wird.
+// Muss man machen, wenn man das Schema ändert.
+
+// npx prisma migrate dev --name init
+
+
+// Falls wir den Server in einem Terminal gestartet haben
+// Einfach ein neues Terminal aufmachen
+
+// Datenbank ansehen
+// npx prisma studio
+
+model Drink{
+  id Int @id @default(autoincrement())
+  name String 
+  ml Float
+  price Float
+  alcohol Float
+  bildpfad String?
+  orders OrderDrink[]
+}
+
+model Food{
+  id Int @id @default(autoincrement())
+  name String
+  calories Int
+  price Int
+  orders OrderFood[]
+}
+
+model Order{
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  drinks OrderDrink[]
+  foods OrderFood[]
+  customerId Int
+
+  customer User @relation("CustomerOrders", fields: [customerId], references: [id])
+}
+
+
+model OrderFood{
+  orderID Int
+  foodID Int
+  quantity Int
+  notes String
+
+  order Order @relation(fields: [orderID], references: [id], onDelete: Cascade)
+  food Food @relation(fields: [foodID], references: [id])
+
+   @@id([orderID, foodID])
+}
+
+// Model für n:m Beziehung
+model OrderDrink{
+  orderID Int
+  drinkID Int
+  quantity Int
+
+  // onDelete: Cascade löscht das OrderDrink Element, wenn die entsprechende Order gelöscht wird
+  order Order @relation(fields: [orderID], references: [id], onDelete: Cascade)
+  drink Drink @relation(fields: [drinkID], references: [id])
+
+  @@id([orderID, drinkID])
+}
+
+// Wenn wir Order verändern, müssen die bestehenden Eintrage aus der DB gelöscht werden!
+
+model User {
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  password String
+  createdOrder Order[] @relation("CustomerOrders")
+
+}
+
+
+
+
+
+

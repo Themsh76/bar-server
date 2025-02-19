@@ -1,0 +1,16 @@
+-- CreateTable
+CREATE TABLE "Order" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable
+CREATE TABLE "OrderDrink" (
+    "orderID" INTEGER NOT NULL,
+    "drinkID" INTEGER NOT NULL,
+    "quantity" INTEGER NOT NULL,
+
+    PRIMARY KEY ("orderID", "drinkID"),
+    CONSTRAINT "OrderDrink_orderID_fkey" FOREIGN KEY ("orderID") REFERENCES "Order" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "OrderDrink_drinkID_fkey" FOREIGN KEY ("drinkID") REFERENCES "Drink" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);

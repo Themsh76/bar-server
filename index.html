@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<h1>Hallo das ist ein Test</h1>
+
+<!-- <button type="button" onclick="GetSomething('http://localhost:3000/menu/drink')">Button alle Getränke</button> !-->
+
+<button type="button" onclick="GetSomething(document.getElementById('dropdown-get').value, 'food')">Button GET</button>
+
+<select id="dropdown-get">
+    <option name ="drink" value="http://localhost:3000/menu/drink">GetAllDrinks</option>
+    <option name = "food" value="http://localhost:3000/menu/food">GetAllFoods</option>
+</select>
+
+
+
+<div id="display-data"></div>
+
+
+
+
+<script>
+
+async function GetSomething(Url, typeofitem) { 
+    
+        const response = await fetch(Url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        });
+
+        
+        const data = await response.json();
+        console.log(data, Url, );
+        displayResponse(data, typeofitem); 
+    
+}
+
+function displayResponse(data, typeofitem) {
+    const container = document.getElementById('display-data');
+    container.innerHTML = ''; 
+
+    // Daten in einer Liste darstellen
+
+    if(typeofitem == "food"){
+        const list = document.createElement('ul');
+        data.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = item.name + item.calories;
+        list.appendChild(listItem);
+    });
+    container.appendChild(list);
+    }
+
+    else if (typeofitem == "drink"){
+
+
+    }
+    else{
+        const list = document.createElement('ul');
+        data.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = item.name ;
+        list.appendChild(listItem);
+    });
+    container.appendChild(list);
+    }
+
+    
+}
+</script>
+
+
+
+<body>
+<form id="imageuploaded">
+    <label for="file">Select file</label>
+    <!-- multiple hier nicht notwendig, nur wenn mehrere Dateien ausgewählt werden -->
+    <input id="file" type="file">
+    <button onclick="uploadFile(event)">Upload</button>
+</form>
+
+<script>
+    function uploadFile(e){
+        e.preventDefault();
+
+        const file = document.getElementById("file");
+        const formData = new FormData();
+        formData.append("image", file.files[0])
+
+        fetch("http://localhost:3000/menu/drink/3/upload", {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => console.log(res))
+    }
+</script>
+
+</body>
+
+
+
+
+</html>
