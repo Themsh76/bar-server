@@ -41,20 +41,26 @@ model Drink {
   price    Float
   alcohol  Float
   bildpfad String?
-  orders   DrinkOrder[]
+  orderstoday   DrinkOrder[] @relation("heute")
+  orderstomorrow DrinkOrder[] @relation("morgen")
 }
 
 // Model für n:m Beziehung
 model DrinkOrder {
-  id       Int @id @default(autoincrement())
+  id  Int @id @default(autoincrement())
   orderId  Int
   quantity Int
-  drinkId  Int
+
+  drinkIdHeute  Int
+  drinkIdMorgen Int
 
   // onDelete: Cascade löscht das DrinkOrder Element, wenn die entsprechende Order gelöscht wird
   order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  Drink Drink @relation(fields: [drinkId], references: [id])
+  DrinkHeute Drink? @relation("heute", fields: [drinkIdHeute], references: [id])
+  DrinkMorgen Drink? @relation("morgen", fields: [drinkIdMorgen], references: [id])
+  
 }
+
 
 model Food {
   id       Int         @id @default(autoincrement())
@@ -85,6 +91,8 @@ model FoodOrder {
 
   @@id([orderId, foodId])
 }
+
+
 
 // Wenn wir Order verändern, müssen die bestehenden Eintrage aus der DB gelöscht werden!
 

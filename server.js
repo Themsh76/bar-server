@@ -10,7 +10,9 @@ const prisma = new PrismaClient()
 
 // Server automatisch neu starten lassen:
 // npm install -g nodemon
-// Zum Starten: nodemon server.j
+// Zum Starten: nodemon server.js
+
+// Oder wer smart ist node --watch server.js -> braucht man keinen nodemon
 
 // npm install cors
 const cors = require("cors")
