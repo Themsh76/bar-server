@@ -28,6 +28,10 @@ const fs = require("fs")
 // npm install bcrypt
 const bcrypt = require("bcrypt")
 
+// npm install body-parser
+// Macht antwort von server into json
+const bodyParser = require("body-parser");
+
 
 // Wird genutzt im sichere Token zu erstellen
 // npm install jsonwebtoken
@@ -40,16 +44,70 @@ let app = express();
 
 app.use(express.json())
 app.use(cors())
+app.use(bodyParser.urlencoded({extended: true}))
 
 const upload = multer({
     dest: "uploads/",
     // Hier können Dinge wie akzeptiere Dateiformate eigestellt werden
 })
 
+
 app.post("/register", async function (req,res){
+
+    try{
+
     const {name, email, password} = req.body;
     const hashedPassword = await bcrypt.hash(password, 10)
+    console.log(hashedPassword);
+
+
+    await prisma.user.create({
+        data:{
+        name: name,
+        email: email,
+        password: hashedPassword
+        }
+    })
+
+    res.send("User created")
+
+} catch(error) {
+    console.log(error)
+    res.status(500).send("User could not be created")
+}
+    // Hier wird die Session erzeugt und an den Client geschickt
 })
+
+app.post("/login", async function (req,res){
+
+    try{
+
+    const {email, password} = req.body;
+
+    const userRecord = await prisma.user.findUnique({
+        where:{
+                email: email         
+        }
+    })
+
+    if(!userRecord){
+        return res.status(404).send("User not found")
+    }
+    const passwordMatch = await bcrypt.compare(password, userRecord.password)
+   
+    if(!passwordMatch){
+        return res.status(401).send("Password does not match")
+    }
+
+    return res.send("Login succesful, your name: " + userRecord.name)
+
+} catch(error) {
+    console.log(error)
+    res.status(500).send("Fehler")
+}
+    // Hier wird die Session erzeugt und an den Client geschickt
+})
+
 
 app.get("/", function(req, res){
     res.sendFile("index.html")

@@ -34,6 +34,8 @@ datasource db {
 
 // format füllt vieles für uns aus >format
 
+// npx prisma validate um zu checken, ob die Datenbank richtig ist.
+
 model Drink {
   id       Int          @id @default(autoincrement())
   name     String

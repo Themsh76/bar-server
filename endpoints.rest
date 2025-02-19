@@ -1,0 +1,11 @@
+
+###
+GET http://localhost:3000/menu
+
+### // Trennt die requests - - - - Es muss zwingend der Space in der Mitte sein weil da der Header laut Protokoll hin müsste
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{"name":"Theodor Schneider","email":"sch22462@spengergasse.at","password":"secret"}
+###
+
