@@ -45,6 +45,7 @@ let app = express();
 app.use(express.json())
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use('/uploads', express.static("uploads"))
 
 const upload = multer({
     dest: "uploads/",
@@ -133,7 +134,7 @@ app.post("/menu/drink/:id/upload", upload.single("image"),  function (req,res){
                 id: id
             },
             data: {
-                bildpfad: targetPath
+                bildpfad: "uploads/" + req.file.originalname
             }
         })
 
