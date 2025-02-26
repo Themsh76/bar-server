@@ -13,5 +13,10 @@
     "npm": "^11.0.0",
     "prisma": "^6.2.0",
     "updates": "^16.4.1"
+  },
+
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js"
   }
 }

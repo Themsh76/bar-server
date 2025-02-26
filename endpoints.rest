@@ -9,3 +9,7 @@ Content-Type: application/json
 {"name":"Theodor Schneider","email":"sch22462@spengergasse.at","password":"secret"}
 ###
 
+### falscher request ohne payload
+POST http://localhost:3000/register
+Content-Type: application/json
+###

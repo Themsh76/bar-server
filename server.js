@@ -39,7 +39,7 @@ const bodyParser = require("body-parser");
 
 
 const port = 3000;
-const JWT_SECRET = 'my-secure-token' // Muss ausgetauscht werden für Produktiveinsatz
+//const JWT_SECRET = 'my-secure-token' // Muss ausgetauscht werden für Produktiveinsatz
 let app = express();
 
 app.use(express.json())
@@ -74,7 +74,7 @@ app.post("/register", async function (req,res){
 
 } catch(error) {
     console.log(error)
-    res.status(500).send("User could not be created")
+    res.status(500).send("User could not be created \n" + error) // Error nur im Entwicklungsprozess. Für Benutzer eigentlich nicht geeignet
 }
     // Hier wird die Session erzeugt und an den Client geschickt
 })
@@ -99,6 +99,9 @@ app.post("/login", async function (req,res){
     if(!passwordMatch){
         return res.status(401).send("Password does not match")
     }
+
+    
+
 
     return res.send("Login succesful, your name: " + userRecord.name)
 
