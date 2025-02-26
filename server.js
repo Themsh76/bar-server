@@ -37,6 +37,11 @@ const bodyParser = require("body-parser");
 // npm install jsonwebtoken
 //const jwt = require("jsonwebtoken")
 
+// npm install express-session
+// npm install cookie-parser
+const session = require("express-session")
+const cookieParser = require("cookie-parser")
+
 
 const port = 3000;
 //const JWT_SECRET = 'my-secure-token' // Muss ausgetauscht werden für Produktiveinsatz
@@ -46,6 +51,15 @@ app.use(express.json())
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use('/uploads', express.static("uploads"))
+
+app.use(cookieParser())
+app.use(session({
+    secret: "your-secret-key",
+    resave: false,
+    saveUniitialized:  true,
+    cookie: {secure: false},
+}));
+
 
 const upload = multer({
     dest: "uploads/",
@@ -100,7 +114,8 @@ app.post("/login", async function (req,res){
         return res.status(401).send("Password does not match")
     }
 
-    
+    req.session.userId = userRecord.id;
+    res.cookie("sessionId", req.session.id, {httpOnly: true})
 
 
     return res.send("Login succesful, your name: " + userRecord.name)

@@ -3,8 +3,10 @@
     "@prisma/client": "^6.2.0",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.9"
   },
@@ -14,7 +16,6 @@
     "prisma": "^6.2.0",
     "updates": "^16.4.1"
   },
-
   "scripts": {
     "dev": "node --watch server.js",
     "start": "node server.js"
