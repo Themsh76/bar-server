@@ -1,0 +1,122 @@
+deno init
+Legt die Grundlegenden Deno sachen an
+
+deno test
+Testet das Programm
+
+
+Wenn in deno trotzdem ein node packet installiert werden soll
+deno add npm:prisma
+Also prisma mit dem Namen von Package ersetzen
+
+Prisma global installieren
+npm install -g prisma
+
+Initialisiere Prisma
+prisma init
+
+
+Wenn man eine Datenbank hat und das Schema für Prisma erzeugen will
+Im env file:
+DATABASE_URL="file:./w3schools.sqlite"
+
+Im "alten" Schema den provider auf den der Datenbank ändern
+provider = "sqlite"
+
+Dann halt die Datenbank in den Prisma Ordner ziehen. 
+prisma db pull
+
+Schema öffnen und staunen
+
+Zeigt Prisma Commands
+(npx) prisma
+
+
+Wenn im Schema ein Attribut [] bedeutet das 1:n oder n:n Beziehung. Funktioniert in Prisma so
+Wenn ? nach dem Datentyp steht bedeutet Feld kann auch Null sein. Also nicht befüllt.
+
+
+>format Document
+Wenn man im Schema Sachen eingibt.
+Ganz wichtig
+
+model Filiale {
+  id    Int     @id @default(autoincrement())
+  name  String
+
+}
+
+model Regal {
+  id    Int     @id @default(autoincrement())
+  filiale Filiale
+}
+
+
+WIRD ZU!!!
+
+model Filiale {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  Regal Regal[]
+}
+
+model Regal {
+  id        Int     @id @default(autoincrement())
+  filiale   Filiale @relation(fields: [filialeId], references: [id])
+  filialeId Int
+}
+
+Ganz einfach macht die references ganz alleine
+
+Wenn man dann n:n machen will
+
+model Fach {
+  id       Int       @id @default(autoincrement())
+  regal    Regal     
+  produkte Produkt[]
+}
+
+model Produkt {
+  id      Int     @id @default(autoincrement())
+  ean     Int
+  name    String
+  comment String?
+  fach    Fach[]
+}
+
+
+Mit format ZU
+
+model Fach {
+  id       Int       @id @default(autoincrement())
+  regal    Regal     @relation(fields: [regalId], references: [id])
+  produkte Produkt[]
+  regalId  Int
+}
+
+model Produkt {
+  id      Int     @id @default(autoincrement())
+  ean     Int
+  name    String
+  comment String?
+  fach    Fach[]
+}
+
+
+Also muss man nur sehr wenig angeben.
+
+
+Wenn Schema fertig ist muss man das Datenbankschema pushen um die sqlite Tabellen zu erzeugen.
+prisma db push
+
+
+Wie man zu den Create Tables kommt
+cd prisma um in den Ordner zu kommen
+sqlite3 um in den richtigen Modus zu kommen
+.open rewe.db also um die Datenbank zu öffnen
+.schema um dann wirklich die create tables und alles zu kriegen
+
+
+Zurück zu dem vorigen Pfad gehen
+cd ..
