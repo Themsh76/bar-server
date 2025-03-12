@@ -7,9 +7,30 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {"name":"Theodor Schneider","email":"sch22462@spengergasse.at","password":"secret"}
-###
+
 
 ### falscher request ohne payload
 POST http://localhost:3000/register
 Content-Type: application/json
-###
+
+
+
+### Login Theodor
+POST http://localhost:3000/login
+Content-Type: application/x-www-form-urlencoded
+
+email=sch22462@spengergasse.at&password=secret
+
+
+### Login XXX
+POST http://localhost:3000/login
+Content-Type: application/x-www-form-urlencoded
+
+email=XXX@XXX.com&password=XXX
+
+
+
+### test theodor
+GET http://localhost:3000/test
+Cache-Control: no-store
+Cookie: connect.sid=s%3Ajsvt-s0CEE7U5kuX6M3PWpE_1mO40QVa.x0c9xxtQduzoX5HQFXvxOfKFsXp0dqQxQjwpTnyq8jw

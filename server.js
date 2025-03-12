@@ -54,10 +54,10 @@ app.use('/uploads', express.static("uploads"))
 
 app.use(cookieParser())
 app.use(session({
-    secret: "your-secret-key",
+    secret: process.env.BACKEND_SECRET,
     resave: false,
-    saveUniitialized:  true,
-    cookie: {secure: false},
+    saveUninitialized:  true,
+    cookie: {secure: false, maxAge: 6000000},
 }));
 
 
@@ -114,8 +114,8 @@ app.post("/login", async function (req,res){
         return res.status(401).send("Password does not match")
     }
 
-    req.session.userId = userRecord.id;
-    res.cookie("sessionId", req.session.id, {httpOnly: true})
+    req.session.user = userRecord;
+    //res.cookie("sessionId", req.session.id, {httpOnly: true})
 
 
     return res.send("Login succesful, your name: " + userRecord.name)
@@ -127,10 +127,22 @@ app.post("/login", async function (req,res){
     // Hier wird die Session erzeugt und an den Client geschickt
 })
 
+app.get("/test", function (req, res) {
+
+    if(!req.session.user){
+        return res.status(401).send("unauthorized")
+    }
+    else{
+        res.json(req.session.user);
+    }
+  });
 
 app.get("/", function(req, res){
     res.sendFile("index.html")
 })
+
+
+
 
 app.post("/menu/drink/:id/upload", upload.single("image"),  function (req,res){
     console.log(req.file);
