@@ -117,6 +117,8 @@ sqlite3 um in den richtigen Modus zu kommen
 .open rewe.db also um die Datenbank zu öffnen
 .schema um dann wirklich die create tables und alles zu kriegen
 
+.dump um auch die Insert into zu kriegen
+
 
 Zurück zu dem vorigen Pfad gehen
 cd ..

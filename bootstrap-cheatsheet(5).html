@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Bootstrap Mitschrift</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Indie+Flower&display=swap');
+        
+        body {
+            font-family: 'Indie Flower', cursive;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Caveat', cursive;
+            font-weight: 700;
+            color: #0d6efd;
+            margin-top: 1.5em;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: #0d6efd;
+            text-decoration: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: #dc3545;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid #0d6efd;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            font-size: 2rem;
+            margin-top: 30px;
+        }
+        
+        h4 {
+            font-size: 1.5rem;
+            text-decoration: underline;
+        }
+        
+        pre {
+            background-color: #f8f9fb;
+            border-left: 5px solid #0d6efd;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        code {
+            font-family: monospace;
+            background-color: #f1f1f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+        
+        .note {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .important {
+            background-color: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-weight: bold;
+        }
+        
+        .tip {
+            background-color: #d1e7dd;
+            border-left: 5px solid #198754;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight {
+            background-color: #ffff99;
+            padding: 0 3px;
+        }
+        
+        .table {
+            margin: 20px 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .table th {
+            background-color: #e9ecef;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .pen-red {
+            color: #dc3545;
+        }
+        
+        .pen-blue {
+            color: #0d6efd;
+        }
+        
+        .pen-green {
+            color: #198754;
+        }
+        
+        .pen-purple {
+            color: #6f42c1;
+        }
+        
+        .pen-underline {
+            text-decoration: underline;
+        }
+        
+        .handdrawn-arrow {
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            display: inline-block;
+            transform: rotate(-20deg);
+            margin: 0 5px;
+        }
+        
+        .crossed-out {
+            text-decoration: line-through;
+            color: #dc3545;
+        }
+        
+        .container-sample {
+            border: 2px dashed #0d6efd;
+            padding: 10px;
+            margin: 15px 0;
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+        
+        .row-sample {
+            border: 2px dashed #dc3545;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: rgba(220, 53, 69, 0.05);
+        }
+        
+        .col-sample {
+            border: 2px dashed #198754;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: rgba(25, 135, 84, 0.05);
+            min-height: 50px;
+        }
+        
+        .section-divider {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.5rem;
+            color: #0d6efd;
+        }
+        
+        .section-divider:before,
+        .section-divider:after {
+            content: " ⋆⋆⋆⋆⋆ ";
+            color: #0d6efd;
+        }
+        
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .color-sample {
+            width: 120px;
+            height: 80px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            color: white;
+            font-size: 0.9rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 200px;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 0.9rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        @media (min-width: 1400px) {
+            .sidebar {
+                display: block;
+            }
+            
+            .container {
+                margin-right: 240px;
+            }
+        }
+        
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar a {
+            text-decoration: none;
+            color: #0d6efd;
+        }
+        
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px dashed #0d6efd;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Meine Bootstrap Mitschrift</h1>
+        <p class="text-center">von: ___________ (Name) &nbsp;&nbsp; Datum: 19.03.2025</p>
+        
+        <aside class="note">
+            Diese Mitschrift enthält alles Wichtige über Bootstrap 5, was ich für den Test brauche. 
+            <span class="pen-red">UNBEDINGT ALLES DURCHLESEN! Der Test wird schwer!</span>
+        </aside>
+
+        <div class="section-divider">Inhaltsverzeichnis</div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <ul>
+                    <li><a href="#einführung">Einführung in Bootstrap</a></li>
+                    <li><a href="#installation">Installation und Einbindung</a></li>
+                    <li><a href="#grid">Das Grid System</a>
+                        <ul>
+                            <li><a href="#grid-konzept">Grundkonzept</a></li>
+                            <li><a href="#grid-responsive">Responsive Breakpoints</a></li>
+                            <li><a href="#grid-container">Container</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#typography">Typografie</a></li>
+                    <li><a href="#farben">Farben und Themes</a></li>
+                    <li><a href="#komponenten">Komponenten</a>
+                        <ul>
+                            <li><a href="#buttons">Buttons</a></li>
+                            <li><a href="#cards">Cards</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul>
+                    <li><a href="#navbar">Navigation</a></li>
+                    <li><a href="#forms">Formulare</a></li>
+                    <li><a href="#tabellen">Tabellen</a></li>
+                    <li><a href="#alerts">Alerts und Benachrichtigungen</a></li>
+                    <li><a href="#utilities">Utility-Klassen</a></li>
+                    <li><a href="#javascript">JavaScript Komponenten</a></li>
+                    <li><a href="#anpassung">Anpassung von Bootstrap</a></li>
+                    <li><a href="#responsive">Responsive Design</a></li>
+                    <li><a href="#tipps">Praxistipps und Best Practices</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-divider" id="einführung">Einführung in Bootstrap</div>
+        
+        <h2>Was ist Bootstrap?</h2>
+        <p>Bootstrap ist ein <span class="highlight">kostenfreies, Open-Source Front-End-Framework</span> für die Entwicklung von responsiven Websites und Webanwendungen. Es wurde von Twitter-Entwicklern erschaffen und ist eines der beliebtesten CSS-Frameworks weltweit.</p>
+        
+        <div class="tip">
+            <p><strong>Definition:</strong> Ein CSS-Framework ist eine vorgefertigte Sammlung von CSS-Dateien, die grundlegende Stilregeln, Layouts und Komponenten bereitstellen, um die Webentwicklung zu beschleunigen.</p>
+        </div>
+        
+        <h3>Warum Bootstrap verwenden?</h3>
+        <ul>
+            <li><span class="pen-blue">Zeitsparend</span> - vorgefertigte Komponenten</li>
+            <li><span class="pen-blue">Responsive</span> - Mobile-First Ansatz</li>
+            <li><span class="pen-blue">Konsistentes Design</span> - über verschiedene Browser hinweg</li>
+            <li><span class="pen-blue">Große Community</span> - viele Ressourcen und Hilfestellungen</li>
+            <li><span class="pen-blue">Anpassbar</span> - kann an eigene Bedürfnisse angepasst werden</li>
+            <li><span class="pen-blue">Dokumentation</span> - sehr ausführlich und hilfreich</li>
+        </ul>
+        
+        <div class="important">
+            <p>In der aktuellen Version (Bootstrap 5) wird <span class="crossed-out">jQuery nicht mehr benötigt!</span> Alle JavaScript-Funktionalitäten wurden mit Vanilla JavaScript neu geschrieben.</p>
+        </div>
+        
+        <h3>Geschichte von Bootstrap</h3>
+        <ul>
+            <li><span class="pen-purple">2011</span> - Bootstrap 1.0 wird veröffentlicht (von Twitter Entwicklern)</li>
+            <li><span class="pen-purple">2013</span> - Bootstrap 3.0 (erster Mobile-First Ansatz)</li>
+            <li><span class="pen-purple">2018</span> - Bootstrap 4.0 (Flexbox, Sass statt Less)</li>
+            <li><span class="pen-purple">2021</span> - Bootstrap 5.0 (ohne jQuery, verbesserte Grid, RTL Support)</li>
+            <li><span class="pen-purple">2023</span> - Bootstrap 5.3 (aktuellste stabile Version)</li>
+        </ul>
+        
+        <div class="section-divider" id="installation">Installation und Einbindung</div>
+        
+        <h2>Wie füge ich Bootstrap in mein Projekt ein?</h2>
+        
+        <h3>Methode 1: CDN (Content Delivery Network)</h3>
+        <p>Am einfachsten: Füge diese Links in deinen HTML-Header ein:</p>
+        
+        <pre><code>&lt;!-- CSS only --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+
+&lt;!-- JavaScript Bundle with Popper --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
+        
+        <div class="note">
+            <p>Vorteile CDN: Schneller, Caching-Effekte, kein lokaler Speicherplatz nötig.<br>
+            Nachteile: Funktioniert nicht offline, Abhängigkeit von externem Dienst.</p>
+        </div>
+        
+        <h3>Methode 2: Download</h3>
+        <ol>
+            <li>Gehe auf <code>getbootstrap.com</code></li>
+            <li>Lade die kompilierte Version herunter</li>
+            <li>Entpacke die ZIP-Datei</li>
+            <li>Binde die CSS- und JS-Dateien in dein Projekt ein:</li>
+        </ol>
+        
+        <pre><code>&lt;!-- CSS --&gt;
+&lt;link href="path/to/bootstrap.min.css" rel="stylesheet"&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script src="path/to/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
+        
+        <h3>Methode 3: Package Manager (npm, yarn)</h3>
+        <pre><code># Mit npm
+npm install bootstrap
+
+# Mit yarn
+yarn add bootstrap</code></pre>
+        
+        <h3>Basisstruktur eines Bootstrap-Projekts</h3>
+        
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Meine Bootstrap Seite&lt;/title&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Hier kommt der Inhalt --&gt;
+    
+    &lt;!-- JavaScript am Ende des Body für bessere Performance --&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        
+        <div class="important">
+            <p>Die <code>&lt;meta name="viewport"&gt;</code> Zeile ist EXTREM WICHTIG für responsives Design! Ohne diese funktioniert Bootstrap nicht richtig auf mobilen Geräten.</p>
+        </div>
+        
+        <div class="section-divider" id="grid">Das Grid System</div>
+        
+        <h2 id="grid-konzept">Das Grid-System - Grundkonzept</h2>
+        <p>Das Grid-System ist das <span class="highlight">Herzstück von Bootstrap</span>. Es ermöglicht das Erstellen von flexiblen, responsiven Layouts mithilfe eines 12-Spalten-Systems.</p>
+        
+        <div class="tip">
+            <p>Das Grid basiert auf CSS Flexbox und ist in 12 Spalten aufgeteilt. Warum 12? Weil sich 12 gut durch 1, 2, 3, 4 und 6 teilen lässt!</p>
+        </div>
+        
+        <h3>Die drei Hauptkomponenten des Grid-Systems</h3>
+        <ol>
+            <li><span class="pen-blue">Container</span> - hält alles zusammen und zentriert</li>
+            <li><span class="pen-red">Rows (Zeilen)</span> - horizontale Gruppen von Spalten</li>
+            <li><span class="pen-green">Columns (Spalten)</span> - der eigentliche Inhalt</li>
+        </ol>
+        
+        <div class="container-sample">
+            <p class="text-center">.container oder .container-fluid</p>
+            <div class="row-sample">
+                <p class="text-center">.row</p>
+                <div class="col-sample">.col</div>
+                <div class="col-sample">.col</div>
+                <div class="col-sample">.col</div>
+            </div>
+            <div class="row-sample">
+                <p class="text-center">.row</p>
+                <div class="col-sample">.col</div>
+                <div class="col-sample">.col</div>
+            </div>
+        </div>
+        
+        <h3>Grundsätzliches Grid-Beispiel</h3>
+        
+        <pre><code>&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-6"&gt;
+            Dieser Inhalt nimmt 6 Spalten ein (50%)
+        &lt;/div&gt;
+        &lt;div class="col-6"&gt;
+            Dieser Inhalt nimmt 6 Spalten ein (50%)
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="row"&gt;
+        &lt;div class="col-4"&gt;
+            Dieser Inhalt nimmt 4 Spalten ein (33.33%)
+        &lt;/div&gt;
+        &lt;div class="col-4"&gt;
+            Dieser Inhalt nimmt 4 Spalten ein (33.33%)
+        &lt;/div&gt;
+        &lt;div class="col-4"&gt;
+            Dieser Inhalt nimmt 4 Spalten ein (33.33%)
+        &lt;/div&gt;
+            &lt;/div&gt;
+&lt;/div&gt;
+
+        <h3>Tooltips</h3>
+        <p>Tooltips zeigen zusätzliche Informationen an, wenn der Benutzer mit der Maus über ein Element fährt:</p>
+        
+        <pre><code>&lt;button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip auf der Oberseite"&gt;
+    Tooltip oben
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip auf der rechten Seite"&gt;
+    Tooltip rechts
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip auf der Unterseite"&gt;
+    Tooltip unten
+&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip auf der linken Seite"&gt;
+    Tooltip links
+&lt;/button&gt;</code></pre>
+        
+        <div class="important">
+            <p>Tooltips müssen mit JavaScript initialisiert werden:</p>
+            <pre><code>var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+})</code></pre>
+        </div>
+        
+        <h3>Popovers</h3>
+        <p>Popovers sind ähnlich wie Tooltips, bieten aber mehr Platz für Inhalte:</p>
+        
+        <pre><code>&lt;button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover-Titel" data-bs-content="Hier steht der Inhalt des Popovers."&gt;
+    Klick mich für Popover
+&lt;/button&gt;</code></pre>
+        
+        <div class="note">
+            <p>Auch Popovers müssen initialisiert werden:</p>
+            <pre><code>var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+})</code></pre>
+        </div>
+        
+        <h3>Scrollspy</h3>
+        <p>Scrollspy aktualisiert die Navigation basierend auf der Scroll-Position:</p>
+        
+        <pre><code>&lt;body data-bs-spy="scroll" data-bs-target="#navbar-example"&gt;
+    &lt;nav id="navbar-example"&gt;
+        &lt;ul class="nav nav-tabs"&gt;
+            &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#section1"&gt;Section 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#section2"&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+    
+    &lt;div data-bs-spy="scroll" data-bs-target="#navbar-example" data-bs-offset="0" tabindex="0"&gt;
+        &lt;h4 id="section1"&gt;Section 1&lt;/h4&gt;
+        &lt;p&gt;...&lt;/p&gt;
+        &lt;h4 id="section2"&gt;Section 2&lt;/h4&gt;
+        &lt;p&gt;...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</code></pre>
+        
+        <div class="section-divider" id="anpassung">Anpassung von Bootstrap</div>
+        
+        <h2>Bootstrap anpassen</h2>
+        <p>Es gibt verschiedene Methoden, um Bootstrap an deine Bedürfnisse anzupassen:</p>
+        
+        <h3>1. Überschreiben mit eigenem CSS</h3>
+        <p>Die einfachste Methode: Lade dein eigenes CSS nach Bootstrap:</p>
+        
+        <pre><code>&lt;!-- Bootstrap CSS --&gt;
+&lt;link href="bootstrap.min.css" rel="stylesheet"&gt;
+
+&lt;!-- Dein eigenes CSS (nach Bootstrap) --&gt;
+&lt;link href="mein-stil.css" rel="stylesheet"&gt;</code></pre>
+        
+        <div class="tip">
+            <p>In deiner CSS-Datei kannst du Bootstrap-Stile überschreiben:</p>
+            <pre><code>/* Bootstrap-Primärfarbe überschreiben */
+:root {
+    --bs-primary: #ff6600 !important;
+    --bs-primary-rgb: 255, 102, 0 !important;
+}
+
+/* Überschreiben von Komponenten-Stilen */
+.btn-primary {
+    background-color: #ff6600;
+    border-color: #dd5500;
+}
+
+.btn-primary:hover {
+    background-color: #dd5500;
+    border-color: #cc4400;
+}</code></pre>
+        </div>
+        
+        <h3>2. Bootstrap über Sass anpassen</h3>
+        <p>Für umfangreichere Anpassungen ist Sass der bessere Weg:</p>
+        
+        <pre><code>// Zunächst Bootstrap-Variablen überschreiben
+$primary: #ff6600;
+$danger: #ff0033;
+$border-radius: 0.5rem;
+$border-radius-lg: 0.8rem;
+
+// Dann Bootstrap importieren
+@import "bootstrap/scss/bootstrap";</code></pre>
+        
+        <div class="note">
+            <p>Die wichtigsten anpassbaren Variablen:</p>
+            <ul>
+                <li>Farben: <code>$primary</code>, <code>$secondary</code>, <code>$success</code>, etc.</li>
+                <li>Schriftarten: <code>$font-family-base</code>, <code>$font-size-base</code></li>
+                <li>Abgerundete Ecken: <code>$border-radius</code></li>
+                <li>Abstände: <code>$spacer</code>, <code>$grid-gutter-width</code></li>
+                <li>Breakpoints: <code>$grid-breakpoints</code></li>
+                <li>Container-Breiten: <code>$container-max-widths</code></li>
+            </ul>
+        </div>
+        
+        <h3>3. Bootstrap-Themes verwenden</h3>
+        <p>Es gibt viele fertige Themes, die Bootstrap anpassen:</p>
+        <ul>
+            <li>Bootswatch: <code>https://bootswatch.com/</code></li>
+            <li>ThemeForest: <code>https://themeforest.net/</code></li>
+            <li>Creative Tim: <code>https://www.creative-tim.com/</code></li>
+        </ul>
+        
+        <div class="section-divider" id="responsive">Responsive Design</div>
+        
+        <h2>Responsive Design mit Bootstrap</h2>
+        <p>Bootstrap ist von Grund auf für responsives Design konzipiert ("Mobile First").</p>
+        
+        <h3>Grundlagen des responsiven Designs</h3>
+        <ol>
+            <li><span class="pen-blue">Viewport Meta-Tag</span> - Stellt sicher, dass die Seite auf verschiedenen Geräten korrekt dargestellt wird
+                <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+            </li>
+            <li><span class="pen-blue">Responsive Grid-System</span> - Verwendet Breakpoints für verschiedene Bildschirmgrößen
+                <pre><code>&lt;div class="col-12 col-md-6 col-lg-4"&gt;...&lt;/div&gt;</code></pre>
+            </li>
+            <li><span class="pen-blue">Responsive Utilities</span> - Kontrollieren Anzeige, Größe und Position je nach Bildschirmgröße</li>
+        </ol>
+        
+        <h3>Responsive Breakpoints in Bootstrap</h3>
+        <p>Hier nochmals die wichtigsten Breakpoints (als Merkhilfe):</p>
+        
+        <pre><code>// Extra small (xs): 0px und größer (Standardwert, kein Präfix nötig)
+.col-* { ... }
+
+// Small (sm): 576px und größer
+.col-sm-* { ... }
+
+// Medium (md): 768px und größer
+.col-md-* { ... }
+
+// Large (lg): 992px und größer
+.col-lg-* { ... }
+
+// Extra large (xl): 1200px und größer
+.col-xl-* { ... }
+
+// Extra extra large (xxl): 1400px und größer
+.col-xxl-* { ... }</code></pre>
+        
+        <h3>Responsive Bilder</h3>
+        
+        <pre><code>&lt;!-- Bild mit responsiver Breite --&gt;
+&lt;img src="..." class="img-fluid" alt="..."&gt;
+
+&lt;!-- Responsive Thumbnails --&gt;
+&lt;img src="..." class="img-thumbnail" alt="..."&gt;</code></pre>
+        
+        <h3>Responsive Sichtbarkeit</h3>
+        
+        <pre><code>&lt;!-- Auf kleinen Geräten verstecken, auf größeren anzeigen --&gt;
+&lt;div class="d-none d-md-block"&gt;Versteckt auf Small und Extra Small&lt;/div&gt;
+
+&lt;!-- Nur auf kleinen Geräten anzeigen --&gt;
+&lt;div class="d-block d-md-none"&gt;Nur auf Small und Extra Small sichtbar&lt;/div&gt;
+
+&lt;!-- Auf mittleren Geräten verstecken --&gt;
+&lt;div class="d-md-none d-lg-block"&gt;Auf Medium unsichtbar&lt;/div&gt;</code></pre>
+        
+        <div class="important">
+            <p>Auswendig lernen: Diese Display-Klassen sind <span class="pen-underline">kumulativ</span> nach oben! z.B. <code>d-md-none</code> versteckt ein Element auf md, lg, xl und xxl!</p>
+        </div>
+        
+        <h3>Responsive Typografie</h3>
+        
+        <pre><code>&lt;!-- Responsive Überschriftengröße --&gt;
+&lt;h1 class="display-1 d-none d-md-block"&gt;Große Überschrift auf Desktop&lt;/h1&gt;
+&lt;h1 class="display-4 d-md-none"&gt;Kleinere Überschrift auf Mobile&lt;/h1&gt;
+
+&lt;!-- Responsive Text-Ausrichtung --&gt;
+&lt;p class="text-start text-md-center text-lg-end"&gt;
+    Linksbündig auf kleinen Bildschirmen, 
+    zentriert auf mittleren Bildschirmen, 
+    rechtsbündig auf großen Bildschirmen
+&lt;/p&gt;</code></pre>
+        
+        <h3>Responsive Abstände (Margins/Paddings)</h3>
+        
+        <pre><code>&lt;!-- Unterschiedliche Margins je nach Breakpoint --&gt;
+&lt;div class="mt-2 mt-md-3 mt-lg-5"&gt;...&lt;/div&gt;
+
+&lt;!-- Unterschiedliche Paddings je nach Breakpoint --&gt;
+&lt;div class="p-2 p-md-4 p-lg-5"&gt;...&lt;/div&gt;</code></pre>
+        
+        <h3>Responsive Navbar</h3>
+        <p>Die Navbar ist standardmäßig responsiv mit dem Toggler:</p>
+        
+        <pre><code>&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+    &lt;div class="container-fluid"&gt;
+        &lt;a class="navbar-brand" href="#"&gt;Logo&lt;/a&gt;
+        &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"&gt;
+            &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+            &lt;!-- Navbarinhalte werden auf kleineren Bildschirmen ausgeblendet 
+                 und können über den Toggler (Hamburger-Menü) geöffnet werden --&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+        
+        <div class="section-divider" id="tipps">Praxistipps und Best Practices</div>
+        
+        <h2>Praxistipps und Best Practices</h2>
+        
+        <h3>1. Mobile First Ansatz</h3>
+        <p>Denke zuerst an mobile Geräte und skaliere dann nach oben:</p>
+        <pre><code>&lt;!-- Falsch (Desktop First) --&gt;
+&lt;div class="col-lg-4 col-6"&gt;...&lt;/div&gt;
+
+&lt;!-- Richtig (Mobile First) --&gt;
+&lt;div class="col-6 col-lg-4"&gt;...&lt;/div&gt;</code></pre>
+        
+        <h3>2. Verwendung der richtigen Container</h3>
+        <ul>
+            <li>Verwende <code>.container</code> für responsive Websites mit fester Breite</li>
+            <li>Verwende <code>.container-fluid</code> für volle Breite</li>
+            <li>Verwende <code>.container-{breakpoint}</code> für responsive Container, die erst ab einem bestimmten Breakpoint fixiert werden</li>
+        </ul>
+        
+        <h3>3. Die richtige Struktur einhalten</h3>
+        <div class="important">
+            <p>Immer die Hierarchie einhalten: <code>.container</code> → <code>.row</code> → <code>.col-*</code></p>
+            <p>NIEMALS eine Row direkt unter einer anderen Row platzieren!</p>
+        </div>
+        
+        <pre><code>&lt;!-- Richtig --&gt;
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-6"&gt;...&lt;/div&gt;
+        &lt;div class="col-md-6"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-md-12"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Falsch --&gt;
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="row"&gt; &lt;!-- Row in Row! --&gt;
+            ...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>4. Mit dem Grid-System richtig umgehen</h3>
+        <ul>
+            <li>Verwende <code>.col</code> ohne Zahl für automatische gleichmäßige Spaltenbreite</li>
+            <li>Nutze <code>offset-*</code> statt leerer Spalten</li>
+            <li>Verwende <code>order-*</code> für responsive Reihenfolge der Inhalte</li>
+        </ul>
+        
+        <h3>5. Performance-Optimierung</h3>
+        <ol>
+            <li>Lade nur die benötigten Bootstrap-Komponenten (über Sass)</li>
+            <li>Verwende den Bootstrap Bundle für JavaScript (enthält Popper.js)</li>
+            <li>Platziere JavaScript am Ende des <code>&lt;body&gt;</code></li>
+            <li>Halte dein CSS "schlank" - vermeide unnötige Überschreibungen</li>
+        </ol>
+        
+        <h3>6. Barrierefreiheit (Accessibility)</h3>
+        <ul>
+            <li>Verwende semantisches HTML (<code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>)</li>
+            <li>Füge ARIA-Attribute zu interaktiven Elementen hinzu</li>
+            <li>Stelle ausreichenden Farbkontrast sicher</li>
+            <li>Teste deine Seite mit Screen-Readern</li>
+        </ul>
+        
+        <h3>7. Responsive Bilder</h3>
+        <p>Verwende <code>.img-fluid</code> für alle Bilder, die responsive sein sollen:</p>
+        <pre><code>&lt;img src="bild.jpg" class="img-fluid" alt="Responsives Bild"&gt;</code></pre>
+        
+        <h3>8. Utility-Klassen geschickt einsetzen</h3>
+        <p>Bootstrap 5 bietet viele nützliche Utility-Klassen, die dir CSS-Schreibarbeit ersparen:</p>
+        <ul>
+            <li>Margins/Paddings: <code>.m-*</code>, <code>.p-*</code></li>
+            <li>Flexbox: <code>.d-flex</code>, <code>.justify-content-*</code>, <code>.align-items-*</code></li>
+            <li>Text: <code>.text-*</code>, <code>.fw-*</code>, <code>.fs-*</code></li>
+            <li>Hintergrund und Farbe: <code>.bg-*</code>, <code>.text-*</code></li>
+        </ul>
+        
+        <h3>9. Häufige Fehler vermeiden</h3>
+        <div class="important">
+            <ul>
+                <li>Vergessen des Viewport-Meta-Tags</li>
+                <li>Falsche Grid-Verschachtelung</li>
+                <li>Überschreiben von Bootstrap-Klassen statt Erweiterung</li>
+                <li>Nicht-responsive Bilder und Tabellen</li>
+                <li>Zu viele benutzerdefinierte Stile, die Bootstrap-Konsistenz brechen</li>
+            </ul>
+        </div>
+        
+        <h3>10. Debugging-Tipps</h3>
+        <ol>
+            <li>Browser-Entwicklertools nutzen, um das Layout zu inspizieren</li>
+            <li>Verwende <code>.border</code> und <code>.bg-*</code> temporär zum Debuggen des Grids</li>
+            <li>Teste auf verschiedenen Geräten oder mit Responsive-Modus im Browser</li>
+            <li>Verwende die Bootstrap-Dokumentation als Referenz</li>
+        </ol>
+        
+        <div class="section-divider">Zusammenfassung</div>
+        
+        <h2>Die wichtigsten Punkte auf einen Blick</h2>
+        <div class="important">
+            <ol>
+                <li>Bootstrap 5 ist ein Mobile-First Framework</li>
+                <li>Grid-System basiert auf 12 Spalten und verwendet Flexbox</li>
+                <li>Container → Row → Column Struktur strikt einhalten</li>
+                <li>Breakpoints: xs (standard), sm (576px), md (768px), lg (992px), xl (1200px), xxl (1400px)</li>
+                <li>Viele eingebaute Komponenten: Navbar, Cards, Forms, Buttons, etc.</li>
+                <li>Utility-Klassen nutzen statt eigenes CSS zu schreiben</li>
+                <li>JavaScript-Komponenten müssen teilweise initialisiert werden</li>
+                <li>Bootstrap 5 benötigt kein jQuery mehr</li>
+            </ol>
+        </div>
+        
+        <div class="tip">
+            <p><strong>Klausurtipp:</strong> Die folgenden Dinge werden oft in der Klausur abgefragt:</p>
+            <ul>
+                <li>Grid-System und Breakpoints</li>
+                <li>Korrekte Syntax für responsive Layouts</li>
+                <li>Container-Arten und ihre Unterschiede</li>
+                <li>Komponenten und ihre Optionen</li>
+                <li>Utility-Klassen und deren Anwendung</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>Viel Erfolg bei der Prüfung! Ich hoffe, diese Mitschrift hilft dir, alle Bootstrap-Konzepte zu verstehen und im Test gut abzuschneiden.</p>
+            <p>Bootstrap 5 Mitschrift - März 2025</p>
+        </div>
+    </div>
+    
+    <div class="sidebar">
+        <h3>Sprungmarken</h3>
+        <ul>
+            <li><a href="#einführung">Einführung</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#grid">Grid-System</a></li>
+            <li><a href="#typography">Typografie</a></li>
+            <li><a href="#farben">Farben</a></li>
+            <li><a href="#komponenten">Komponenten</a></li>
+            <li><a href="#navbar">Navigation</a></li>
+            <li><a href="#forms">Formulare</a></li>
+            <li><a href="#tabellen">Tabellen</a></li>
+            <li><a href="#alerts">Alerts</a></li>
+            <li><a href="#utilities">Utilities</a></li>
+            <li><a href="#javascript">JavaScript</a></li>
+            <li><a href="#anpassung">Anpassung</a></li>
+            <li><a href="#responsive">Responsive</a></li>
+            <li><a href="#tipps">Praxistipps</a></li>
+        </ul>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html></code></pre>
+        
+        <div class="important">
+            <p>Die Summe der Spalten in einer Zeile sollte 12 ergeben (oder weniger, dann bleibt Platz frei).</p>
+        </div>
+        
+        <h3 id="grid-responsive">Responsive Breakpoints</h3>
+        <p>Bootstrap verwendet <span class="highlight">Breakpoints</span>, um responsives Verhalten zu ermöglichen. Diese Breakpoints definieren, wann sich das Layout an verschiedene Bildschirmgrößen anpasst.</p>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Breakpoint</th>
+                    <th>Klassenprefix</th>
+                    <th>Bildschirmbreite</th>
+                    <th>Verwendung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Extra small</td>
+                    <td><code>col-</code></td>
+                    <td>&lt;576px</td>
+                    <td>Smartphones (Portrait)</td>
+                </tr>
+                <tr>
+                    <td>Small</td>
+                    <td><code>col-sm-</code></td>
+                    <td>≥576px</td>
+                    <td>Smartphones (Landscape)</td>
+                </tr>
+                <tr>
+                    <td>Medium</td>
+                    <td><code>col-md-</code></td>
+                    <td>≥768px</td>
+                    <td>Tablets</td>
+                </tr>
+                <tr>
+                    <td>Large</td>
+                    <td><code>col-lg-</code></td>
+                    <td>≥992px</td>
+                    <td>Desktops</td>
+                </tr>
+                <tr>
+                    <td>Extra large</td>
+                    <td><code>col-xl-</code></td>
+                    <td>≥1200px</td>
+                    <td>Große Desktops</td>
+                </tr>
+                <tr>
+                    <td>Extra extra large</td>
+                    <td><code>col-xxl-</code></td>
+                    <td>≥1400px</td>
+                    <td>Sehr große Displays</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="note">
+            <p>Die Klassen funktionieren aufsteigend! Wenn du <code>col-md-6</code> verwendest, gilt dies für Medium, Large und Extra Large Breakpoints, es sei denn, du definierst explizit andere Werte für größere Breakpoints.</p>
+        </div>
+        
+        <h3>Responsives Grid-Beispiel</h3>
+        
+        <pre><code>&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-12 col-md-6 col-lg-4"&gt;
+            &lt;!-- Auf Smartphones: volle Breite --&gt;
+            &lt;!-- Auf Tablets: 6 Spalten (50%) --&gt;
+            &lt;!-- Auf Desktops: 4 Spalten (33.33%) --&gt;
+            Inhalt...
+        &lt;/div&gt;
+        &lt;div class="col-12 col-md-6 col-lg-4"&gt;
+            Inhalt...
+        &lt;/div&gt;
+        &lt;div class="col-12 col-lg-4"&gt;
+            &lt;!-- Auf Smartphones und Tablets: volle Breite --&gt;
+            &lt;!-- Auf Desktops: 4 Spalten (33.33%) --&gt;
+            Inhalt...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3 id="grid-container">Container-Arten</h3>
+        <p>Bootstrap bietet verschiedene Container-Arten:</p>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Klasse</th>
+                    <th>Beschreibung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.container</code></td>
+                    <td>Responsive Container mit fester Breite, die sich an Breakpoints anpasst</td>
+                </tr>
+                <tr>
+                    <td><code>.container-fluid</code></td>
+                    <td>Container mit voller Breite (100%) auf allen Breakpoints</td>
+                </tr>
+                <tr>
+                    <td><code>.container-{breakpoint}</code></td>
+                    <td>100% breit bis zum angegebenen Breakpoint, dann wie .container<br>
+                    z.B.: <code>.container-sm</code>, <code>.container-md</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="important">
+            <p>IMMER WICHTIG: Container → Row → Columns. Diese Hierarchie muss eingehalten werden!</p>
+        </div>
+        
+        <h3>Zusätzliche Grid-Funktionen</h3>
+        
+        <h4>Spalten-Versatz (Offsetting)</h4>
+        <pre><code>&lt;div class="row"&gt;
+    &lt;div class="col-md-4"&gt;Inhalt&lt;/div&gt;
+    &lt;div class="col-md-4 offset-md-4"&gt;Versetzt um 4 Spalten&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h4>Spalten-Reihenfolge (Order)</h4>
+        <pre><code>&lt;div class="row"&gt;
+    &lt;div class="col-md-4 order-md-2"&gt;Wird als zweites angezeigt&lt;/div&gt;
+    &lt;div class="col-md-4 order-md-3"&gt;Wird als drittes angezeigt&lt;/div&gt;
+    &lt;div class="col-md-4 order-md-1"&gt;Wird als erstes angezeigt&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h4>Verschachtelte Grids (Nesting)</h4>
+        <pre><code>&lt;div class="row"&gt;
+    &lt;div class="col-sm-9"&gt;
+        Äußere Spalte
+        &lt;div class="row"&gt;
+            &lt;div class="col-8"&gt;Verschachtelte Spalte&lt;/div&gt;
+            &lt;div class="col-4"&gt;Verschachtelte Spalte&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <div class="section-divider" id="typography">Typografie</div>
+        
+        <h2>Bootstrap Typografie</h2>
+        <p>Bootstrap bietet verschiedene Klassen zur Formatierung von Text und Überschriften.</p>
+        
+        <h3>Überschriften</h3>
+        <pre><code>&lt;h1&gt;h1. Bootstrap Überschrift&lt;/h1&gt;
+&lt;h2&gt;h2. Bootstrap Überschrift&lt;/h2&gt;
+&lt;h3&gt;h3. Bootstrap Überschrift&lt;/h3&gt;
+&lt;h4&gt;h4. Bootstrap Überschrift&lt;/h4&gt;
+&lt;h5&gt;h5. Bootstrap Überschrift&lt;/h5&gt;
+&lt;h6&gt;h6. Bootstrap Überschrift&lt;/h6&gt;</code></pre>
+        
+        <div class="tip">
+            <p>Du kannst auch <code>.h1</code> bis <code>.h6</code> Klassen verwenden, um einem Element das Aussehen einer Überschrift zu geben, ohne die semantische Bedeutung zu ändern.</p>
+        </div>
+        
+        <h3>Display-Überschriften</h3>
+        <p>Für noch größere, auffälligere Überschriften:</p>
+        
+        <pre><code>&lt;h1 class="display-1"&gt;Display 1&lt;/h1&gt;
+&lt;h1 class="display-2"&gt;Display 2&lt;/h1&gt;
+&lt;h1 class="display-3"&gt;Display 3&lt;/h1&gt;
+&lt;h1 class="display-4"&gt;Display 4&lt;/h1&gt;
+&lt;h1 class="display-5"&gt;Display 5&lt;/h1&gt;
+&lt;h1 class="display-6"&gt;Display 6&lt;/h1&gt;</code></pre>
+        
+        <h3>Text-Ausrichtung</h3>
+        
+        <pre><code>&lt;p class="text-start"&gt;Linksbündiger Text.&lt;/p&gt;
+&lt;p class="text-center"&gt;Zentrierter Text.&lt;/p&gt;
+&lt;p class="text-end"&gt;Rechtsbündiger Text.&lt;/p&gt;</code></pre>
+        
+        <h3>Text-Transformation</h3>
+        
+        <pre><code>&lt;p class="text-lowercase"&gt;LOWERCASE TEXT.&lt;/p&gt;
+&lt;p class="text-uppercase"&gt;uppercase text.&lt;/p&gt;
+&lt;p class="text-capitalize"&gt;capitalized text.&lt;/p&gt;</code></pre>
+        
+        <h3>Textgröße und -gewicht</h3>
+        
+        <pre><code>&lt;p class="fs-1"&gt;Größe 1&lt;/p&gt;
+&lt;p class="fs-2"&gt;Größe 2&lt;/p&gt;
+&lt;p class="fs-3"&gt;Größe 3&lt;/p&gt;
+&lt;p class="fs-4"&gt;Größe 4&lt;/p&gt;
+&lt;p class="fs-5"&gt;Größe 5&lt;/p&gt;
+&lt;p class="fs-6"&gt;Größe 6&lt;/p&gt;
+
+&lt;p class="fw-bold"&gt;Fetter Text&lt;/p&gt;
+&lt;p class="fw-bolder"&gt;Fetterer Text&lt;/p&gt;
+&lt;p class="fw-normal"&gt;Normaler Text&lt;/p&gt;
+&lt;p class="fw-light"&gt;Leichter Text&lt;/p&gt;
+&lt;p class="fw-lighter"&gt;Leichterer Text&lt;/p&gt;
+&lt;p class="fst-italic"&gt;Kursiver Text&lt;/p&gt;</code></pre>
+        
+        <h3>Listen</h3>
+        
+        <pre><code>&lt;!-- Unstyled List --&gt;
+&lt;ul class="list-unstyled"&gt;
+    &lt;li&gt;Ohne Listenstil&lt;/li&gt;
+    &lt;li&gt;Kein Einzug&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Inline List --&gt;
+&lt;ul class="list-inline"&gt;
+    &lt;li class="list-inline-item"&gt;Inline-Element 1&lt;/li&gt;
+    &lt;li class="list-inline-item"&gt;Inline-Element 2&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        
+        <div class="important">
+            <p>Achte bei <code>list-inline</code> darauf, dass du <span class="pen-underline">zusätzlich</span> die Klasse <code>list-inline-item</code> für jedes <code>&lt;li&gt;</code>-Element verwendest!</p>
+        </div>
+        
+        <div class="section-divider" id="farben">Farben und Themes</div>
+        
+        <h2>Bootstrap Farbsystem</h2>
+        <p>Bootstrap hat ein vordefiniertes Farbsystem mit semantischen Farben:</p>
+        
+        <div class="color-palette">
+            <div class="color-sample" style="background-color: #0d6efd;">Primary<br>#0d6efd</div>
+            <div class="color-sample" style="background-color: #6c757d;">Secondary<br>#6c757d</div>
+            <div class="color-sample" style="background-color: #198754;">Success<br>#198754</div>
+            <div class="color-sample" style="background-color: #dc3545;">Danger<br>#dc3545</div>
+            <div class="color-sample" style="background-color: #ffc107; color: black;">Warning<br>#ffc107</div>
+            <div class="color-sample" style="background-color: #0dcaf0; color: black;">Info<br>#0dcaf0</div>
+            <div class="color-sample" style="background-color: #f8f9fa; color: black;">Light<br>#f8f9fa</div>
+            <div class="color-sample" style="background-color: #212529;">Dark<br>#212529</div>
+        </div>
+        
+        <h3>Textfarben</h3>
+        
+        <pre><code>&lt;p class="text-primary"&gt;Primary text&lt;/p&gt;
+&lt;p class="text-secondary"&gt;Secondary text&lt;/p&gt;
+&lt;p class="text-success"&gt;Success text&lt;/p&gt;
+&lt;p class="text-danger"&gt;Danger text&lt;/p&gt;
+&lt;p class="text-warning"&gt;Warning text&lt;/p&gt;
+&lt;p class="text-info"&gt;Info text&lt;/p&gt;
+&lt;p class="text-light bg-dark"&gt;Light text (auf dunklem Hintergrund)&lt;/p&gt;
+&lt;p class="text-dark"&gt;Dark text&lt;/p&gt;
+&lt;p class="text-muted"&gt;Muted text&lt;/p&gt;
+&lt;p class="text-white bg-dark"&gt;White text (auf dunklem Hintergrund)&lt;/p&gt;</code></pre>
+        
+        <h3>Hintergrundfarben</h3>
+        
+        <pre><code>&lt;div class="bg-primary text-white"&gt;Primary background&lt;/div&gt;
+&lt;div class="bg-secondary text-white"&gt;Secondary background&lt;/div&gt;
+&lt;div class="bg-success text-white"&gt;Success background&lt;/div&gt;
+&lt;div class="bg-danger text-white"&gt;Danger background&lt;/div&gt;
+&lt;div class="bg-warning"&gt;Warning background&lt;/div&gt;
+&lt;div class="bg-info"&gt;Info background&lt;/div&gt;
+&lt;div class="bg-light"&gt;Light background&lt;/div&gt;
+&lt;div class="bg-dark text-white"&gt;Dark background&lt;/div&gt;
+&lt;div class="bg-white"&gt;White background&lt;/div&gt;
+&lt;div class="bg-transparent"&gt;Transparent background&lt;/div&gt;</code></pre>
+        
+        <div class="tip">
+            <p>Seit Bootstrap 5.2 gibt es auch Farbvariationen mit <code>*-subtle</code>, <code>*-emphasis</code> und <code>bg-opacity-*</code> für mehr Gestaltungsmöglichkeiten.</p>
+        </div>
+        
+        <div class="section-divider" id="komponenten">Komponenten</div>
+        
+        <h2 id="buttons">Buttons</h2>
+        <p>Bootstrap bietet verschiedene vordefinierte Button-Stile:</p>
+        
+        <pre><code>&lt;!-- Button-Varianten --&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button type="button" class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button type="button" class="btn btn-info"&gt;Info&lt;/button&gt;
+&lt;button type="button" class="btn btn-light"&gt;Light&lt;/button&gt;
+&lt;button type="button" class="btn btn-dark"&gt;Dark&lt;/button&gt;
+&lt;button type="button" class="btn btn-link"&gt;Link&lt;/button&gt;</code></pre>
+        
+        <h3>Button-Größen</h3>
+        
+        <pre><code>&lt;button type="button" class="btn btn-primary btn-lg"&gt;Großer Button&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary"&gt;Normaler Button&lt;/button&gt;
+&lt;button type="button" class="btn btn-primary btn-sm"&gt;Kleiner Button&lt;/button&gt;</code></pre>
+        
+        <h3>Outline Buttons</h3>
+        
+        <pre><code>&lt;button type="button" class="btn btn-outline-primary"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button type="button" class="btn btn-outline-success"&gt;Success&lt;/button&gt;
+&lt;!-- usw. für alle Farbvarianten --&gt;</code></pre>
+        
+        <h3>Button-Gruppen</h3>
+        
+        <pre><code>&lt;div class="btn-group" role="group" aria-label="Basic example"&gt;
+    &lt;button type="button" class="btn btn-primary"&gt;Links&lt;/button&gt;
+    &lt;button type="button" class="btn btn-primary"&gt;Mitte&lt;/button&gt;
+    &lt;button type="button" class="btn btn-primary"&gt;Rechts&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        
+        <div class="note">
+            <p>Die <code>role="group"</code> und <code>aria-label</code> Attribute verbessern die Barrierefreiheit, sind aber für die Funktionalität nicht zwingend erforderlich.</p>
+        </div>
+        
+        <h2 id="cards">Cards</h2>
+        <p>Cards sind flexible Container, die verschiedene Inhalte aufnehmen können:</p>
+        
+        <pre><code>&lt;div class="card" style="width: 18rem;"&gt;
+    &lt;img src="..." class="card-img-top" alt="..."&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Card-Titel&lt;/h5&gt;
+        &lt;p class="card-text"&gt;Card-Inhalt&lt;/p&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;Button&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>Card-Bestandteile</h3>
+        
+        <pre><code>&lt;div class="card"&gt;
+    &lt;div class="card-header"&gt;
+        Header
+    &lt;/div&gt;
+    &lt;div class="card-body"&gt;
+        &lt;h5 class="card-title"&gt;Titel&lt;/h5&gt;
+        &lt;p class="card-text"&gt;Text&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;ul class="list-group list-group-flush"&gt;
+        &lt;li class="list-group-item"&gt;Element 1&lt;/li&gt;
+        &lt;li class="list-group-item"&gt;Element 2&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="card-footer"&gt;
+        Footer
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>Card-Gruppen</h3>
+        
+        <pre><code>&lt;div class="card-group"&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card-body"&gt;
+            &lt;h5 class="card-title"&gt;Card 1&lt;/h5&gt;
+            &lt;p class="card-text"&gt;Inhalt&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card-body"&gt;
+            &lt;h5 class="card-title"&gt;Card 2&lt;/h5&gt;
+            &lt;p class="card-text"&gt;Inhalt&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="card"&gt;
+        &lt;div class="card-body"&gt;
+            &lt;h5 class="card-title"&gt;Card 3&lt;/h5&gt;
+            &lt;p class="card-text"&gt;Inhalt&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <div class="section-divider" id="navbar">Navigation</div>
+        
+        <h2>Navigation und Navbar</h2>
+        <p>Die Navbar ist eine der wichtigsten Komponenten für die Navigation auf einer Website.</p>
+        
+        <h3>Einfache Navbar</h3>
+        
+        <pre><code>&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+    &lt;div class="container-fluid"&gt;
+        &lt;a class="navbar-brand" href="#"&gt;Brand&lt;/a&gt;
+        &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"&gt;
+            &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+            &lt;ul class="navbar-nav"&gt;
+                &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link" href="#"&gt;Features&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class="nav-item"&gt;
+                    &lt;a class="nav-link" href="#"&gt;Pricing&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+        
+        <div class="important">
+            <p>Die Klasse <code>navbar-expand-lg</code> bestimmt, ab welchem Breakpoint die Navbar vom mobilen "Hamburger-Menü" zum Desktop-Menü wechselt.</p>
+        </div>
+        
+        <h3>Navbar-Varianten</h3>
+        
+        <pre><code>&lt;!-- Helle Navbar (dunkler Text) --&gt;
+&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;...&lt;/nav&gt;
+
+&lt;!-- Dunkle Navbar (heller Text) --&gt;
+&lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;...&lt;/nav&gt;
+
+&lt;!-- Farbige Navbar --&gt;
+&lt;nav class="navbar navbar-expand-lg navbar-dark bg-primary"&gt;...&lt;/nav&gt;</code></pre>
+        
+        <h3>Navbar mit Dropdown</h3>
+        
+        <pre><code>&lt;ul class="navbar-nav"&gt;
+    &lt;!-- ... andere nav-items ... --&gt;
+    &lt;li class="nav-item dropdown"&gt;
+        &lt;a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+           data-bs-toggle="dropdown" aria-expanded="false"&gt;
+            Dropdown
+        &lt;/a&gt;
+        &lt;ul class="dropdown-menu" aria-labelledby="navbarDropdown"&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Something else&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        
+        <h3>Suchformular in Navbar</h3>
+        
+        <pre><code>&lt;form class="d-flex"&gt;
+    &lt;input class="form-control me-2" type="search" placeholder="Suchen" aria-label="Search"&gt;
+    &lt;button class="btn btn-outline-success" type="submit"&gt;Suchen&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        
+        <div class="note">
+            <p>In Bootstrap 5 wurde <code>form-inline</code> durch <code>d-flex</code> ersetzt!</p>
+        </div>
+        
+        <h3>Fixierte Navbar</h3>
+        
+        <pre><code>&lt;!-- Fixiert am oberen Bildschirmrand --&gt;
+&lt;nav class="navbar fixed-top navbar-light bg-light"&gt;...&lt;/nav&gt;
+
+&lt;!-- Fixiert am unteren Bildschirmrand --&gt;
+&lt;nav class="navbar fixed-bottom navbar-light bg-light"&gt;...&lt;/nav&gt;
+
+&lt;!-- Sticky-Navbar (bleibt beim Scrollen oben) --&gt;
+&lt;nav class="navbar sticky-top navbar-light bg-light"&gt;...&lt;/nav&gt;</code></pre>
+        
+        <div class="important">
+            <p>Bei Verwendung von <code>fixed-top</code> solltest du dem <code>&lt;body&gt;</code> ein zusätzliches Padding-Top hinzufügen, um zu verhindern, dass Inhalte hinter der Navbar versteckt werden!</p>
+        </div>
+        
+        <div class="section-divider" id="forms">Formulare</div>
+        
+        <h2>Formulare in Bootstrap</h2>
+        <p>Bootstrap bietet verschiedene Klassen zur Gestaltung von Formularen:</p>
+        
+        <h3>Grundstruktur eines Formulars</h3>
+        
+        <pre><code>&lt;form&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;label for="exampleInputEmail1" class="form-label"&gt;Email-Adresse&lt;/label&gt;
+        &lt;input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"&gt;
+        &lt;div id="emailHelp" class="form-text"&gt;Wir geben Ihre E-Mail niemals weiter.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;label for="exampleInputPassword1" class="form-label"&gt;Passwort&lt;/label&gt;
+        &lt;input type="password" class="form-control" id="exampleInputPassword1"&gt;
+    &lt;/div&gt;
+    &lt;div class="mb-3 form-check"&gt;
+        &lt;input type="checkbox" class="form-check-input" id="exampleCheck1"&gt;
+        &lt;label class="form-check-label" for="exampleCheck1"&gt;Check me out&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        
+        <div class="note">
+            <p>In Bootstrap 5 wurde das Feldgruppen-Markup vereinfacht. Statt <code>.form-group</code> verwendet man jetzt allgemeine Margin-Klassen wie <code>.mb-3</code>.</p>
+        </div>
+        
+        <h3>Eingabefeld-Größen</h3>
+        
+        <pre><code>&lt;!-- Große Eingabefelder --&gt;
+&lt;input class="form-control form-control-lg" type="text" placeholder="Großes Eingabefeld"&gt;
+
+&lt;!-- Standard-Eingabefelder --&gt;
+&lt;input class="form-control" type="text" placeholder="Standard-Eingabefeld"&gt;
+
+&lt;!-- Kleine Eingabefelder --&gt;
+&lt;input class="form-control form-control-sm" type="text" placeholder="Kleines Eingabefeld"&gt;</code></pre>
+        
+        <h3>Eingabefeld-Status</h3>
+        
+        <pre><code>&lt;!-- Valides Eingabefeld --&gt;
+&lt;input type="text" class="form-control is-valid" id="validInput"&gt;
+&lt;div class="valid-feedback"&gt;Sieht gut aus!&lt;/div&gt;
+
+&lt;!-- Invalides Eingabefeld --&gt;
+&lt;input type="text" class="form-control is-invalid" id="invalidInput"&gt;
+&lt;div class="invalid-feedback"&gt;Bitte geben Sie einen gültigen Wert ein.&lt;/div&gt;</code></pre>
+        
+        <h3>Checkboxen und Radiobuttons</h3>
+        
+        <pre><code>&lt;!-- Checkbox --&gt;
+&lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"&gt;
+    &lt;label class="form-check-label" for="flexCheckDefault"&gt;
+        Default checkbox
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Radio Buttons --&gt;
+&lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"&gt;
+    &lt;label class="form-check-label" for="flexRadioDefault1"&gt;
+        Default radio
+    &lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked&gt;
+    &lt;label class="form-check-label" for="flexRadioDefault2"&gt;
+        Default checked radio
+    &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>Switch (Toggle)</h3>
+        
+        <pre><code>&lt;div class="form-check form-switch"&gt;
+    &lt;input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"&gt;
+    &lt;label class="form-check-label" for="flexSwitchCheckDefault"&gt;Default switch checkbox&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>Select-Felder</h3>
+        
+        <pre><code>&lt;select class="form-select" aria-label="Default select example"&gt;
+    &lt;option selected&gt;Öffne dieses Select-Menü&lt;/option&gt;
+    &lt;option value="1"&gt;Eins&lt;/option&gt;
+    &lt;option value="2"&gt;Zwei&lt;/option&gt;
+    &lt;option value="3"&gt;Drei&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        
+        <h3>Floating Labels</h3>
+        
+        <pre><code>&lt;div class="form-floating mb-3"&gt;
+    &lt;input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"&gt;
+    &lt;label for="floatingInput"&gt;Email-Adresse&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class="form-floating"&gt;
+    &lt;input type="password" class="form-control" id="floatingPassword" placeholder="Password"&gt;
+    &lt;label for="floatingPassword"&gt;Password&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>Input-Gruppen</h3>
+        
+        <pre><code>&lt;div class="input-group mb-3"&gt;
+    &lt;span class="input-group-text" id="basic-addon1"&gt;@&lt;/span&gt;
+    &lt;input type="text" class="form-control" placeholder="Benutzername" aria-label="Username" aria-describedby="basic-addon1"&gt;
+&lt;/div&gt;
+
+&lt;div class="input-group mb-3"&gt;
+    &lt;input type="text" class="form-control" placeholder="Empfängername" aria-label="Recipient's username" aria-describedby="basic-addon2"&gt;
+    &lt;span class="input-group-text" id="basic-addon2"&gt;@example.com&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-group mb-3"&gt;
+    &lt;span class="input-group-text"&gt;$&lt;/span&gt;
+    &lt;input type="text" class="form-control" aria-label="Dollarbetrag"&gt;
+    &lt;span class="input-group-text"&gt;.00&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        
+        <div class="important">
+            <p>Für barrierefreie Formulare solltest du immer <code>aria-label</code> oder <code>aria-labelledby</code> Attribute verwenden, wenn kein sichtbares Label vorhanden ist!</p>
+        </div>
+        
+        <div class="section-divider" id="tabellen">Tabellen</div>
+        
+        <h2>Tabellen</h2>
+        <p>Bootstrap bietet verschiedene Klassen zur Gestaltung von Tabellen:</p>
+        
+        <h3>Einfache Tabelle</h3>
+        
+        <pre><code>&lt;table class="table"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;#&lt;/th&gt;
+            &lt;th scope="col"&gt;Vorname&lt;/th&gt;
+            &lt;th scope="col"&gt;Nachname&lt;/th&gt;
+            &lt;th scope="col"&gt;Benutzername&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;1&lt;/th&gt;
+            &lt;td&gt;Mark&lt;/td&gt;
+            &lt;td&gt;Otto&lt;/td&gt;
+            &lt;td&gt;@mdo&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;2&lt;/th&gt;
+            &lt;td&gt;Jacob&lt;/td&gt;
+            &lt;td&gt;Thornton&lt;/td&gt;
+            &lt;td&gt;@fat&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;3&lt;/th&gt;
+            &lt;td&gt;Larry&lt;/td&gt;
+            &lt;td&gt;the Bird&lt;/td&gt;
+            &lt;td&gt;@twitter&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        
+        <h3>Tabellen-Varianten</h3>
+        
+        <pre><code>&lt;!-- Gestreifte Tabelle --&gt;
+&lt;table class="table table-striped"&gt;...&lt;/table&gt;
+
+&lt;!-- Umrandete Tabelle --&gt;
+&lt;table class="table table-bordered"&gt;...&lt;/table&gt;
+
+&lt;!-- Borderless Tabelle --&gt;
+&lt;table class="table table-borderless"&gt;...&lt;/table&gt;
+
+&lt;!-- Hover-Effekt für Zeilen --&gt;
+&lt;table class="table table-hover"&gt;...&lt;/table&gt;
+
+&lt;!-- Kompakte Tabelle --&gt;
+&lt;table class="table table-sm"&gt;...&lt;/table&gt;
+
+&lt;!-- Farbige Tabelle --&gt;
+&lt;table class="table table-dark"&gt;...&lt;/table&gt;</code></pre>
+        
+        <div class="note">
+            <p>Diese Klassen können kombiniert werden, z.B. <code>class="table table-striped table-hover table-bordered"</code>.</p>
+        </div>
+        
+        <h3>Farbige Tabellen-Zeilen/-Zellen</h3>
+        
+        <pre><code>&lt;tr class="table-primary"&gt;...&lt;/tr&gt;
+&lt;tr class="table-secondary"&gt;...&lt;/tr&gt;
+&lt;tr class="table-success"&gt;...&lt;/tr&gt;
+&lt;tr class="table-danger"&gt;...&lt;/tr&gt;
+&lt;tr class="table-warning"&gt;...&lt;/tr&gt;
+&lt;tr class="table-info"&gt;...&lt;/tr&gt;
+&lt;tr class="table-light"&gt;...&lt;/tr&gt;
+&lt;tr class="table-dark"&gt;...&lt;/tr&gt;
+
+&lt;!-- Oder für einzelne Zellen --&gt;
+&lt;td class="table-primary"&gt;...&lt;/td&gt;</code></pre>
+        
+        <h3>Responsive Tabellen</h3>
+        
+        <pre><code>&lt;div class="table-responsive"&gt;
+    &lt;table class="table"&gt;...&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- Mit Breakpoints --&gt;
+&lt;div class="table-responsive-sm"&gt;...&lt;/div&gt;
+&lt;div class="table-responsive-md"&gt;...&lt;/div&gt;
+&lt;div class="table-responsive-lg"&gt;...&lt;/div&gt;
+&lt;div class="table-responsive-xl"&gt;...&lt;/div&gt;
+&lt;div class="table-responsive-xxl"&gt;...&lt;/div&gt;</code></pre>
+        
+        <div class="important">
+            <p>Die <code>table-responsive</code> Klasse muss auf ein Container-Element um die Tabelle angewendet werden, NICHT auf die Tabelle selbst!</p>
+        </div>
+        
+        <div class="section-divider" id="alerts">Alerts und Benachrichtigungen</div>
+        
+        <h2>Alerts</h2>
+        <p>Alerts werden verwendet, um Feedback, Warnungen oder wichtige Informationen anzuzeigen:</p>
+        
+        <pre><code>&lt;div class="alert alert-primary" role="alert"&gt;
+    Eine einfache primäre Alert-Box
+&lt;/div&gt;
+&lt;div class="alert alert-secondary" role="alert"&gt;
+    Eine einfache sekundäre Alert-Box
+&lt;/div&gt;
+&lt;div class="alert alert-success" role="alert"&gt;
+    Eine einfache Erfolgs-Alert-Box
+&lt;/div&gt;
+&lt;div class="alert alert-danger" role="alert"&gt;
+    Eine einfache Gefahren-Alert-Box
+&lt;/div&gt;
+&lt;div class="alert alert-warning" role="alert"&gt;
+    Eine einfache Warnungs-Alert-Box
+&lt;/div&gt;
+&lt;div class="alert alert-info" role="alert"&gt;
+    Eine einfache Info-Alert-Box
+&lt;/div&gt;
+&lt;div class="alert alert-light" role="alert"&gt;
+    Eine einfache helle Alert-Box
+&lt;/div&gt;
+&lt;div class="alert alert-dark" role="alert"&gt;
+    Eine einfache dunkle Alert-Box
+&lt;/div&gt;</code></pre>
+        
+        <h3>Alerts mit zusätzlichem Inhalt</h3>
+        
+        <pre><code>&lt;div class="alert alert-success" role="alert"&gt;
+    &lt;h4 class="alert-heading"&gt;Gut gemacht!&lt;/h4&gt;
+    &lt;p&gt;Oh ja, du hast diese wichtige Alert-Nachricht erfolgreich gelesen.&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;p class="mb-0"&gt;Wann immer du diese Klasse brauchst, stelle sicher, dass du sie richtig verwendest.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>Schließbare Alerts</h3>
+        
+        <pre><code>&lt;div class="alert alert-warning alert-dismissible fade show" role="alert"&gt;
+    &lt;strong&gt;Holy guacamole!&lt;/strong&gt; Du solltest die folgenden Punkte überprüfen.
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        
+        <div class="note">
+            <p>Für schließbare Alerts wird JavaScript benötigt. Stelle sicher, dass das Bootstrap JS Bundle eingebunden ist.</p>
+        </div>
+        
+        <h2>Toast-Benachrichtigungen</h2>
+        <p>Toasts sind kleine Benachrichtigungen, die wie Push-Nachrichten aussehen:</p>
+        
+        <pre><code>&lt;div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"&gt;
+    &lt;div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"&gt;
+        &lt;div class="toast-header"&gt;
+            &lt;strong class="me-auto"&gt;Bootstrap&lt;/strong&gt;
+            &lt;small&gt;Gerade eben&lt;/small&gt;
+            &lt;button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="toast-body"&gt;
+            Hallo Welt! Dies ist eine Toast-Nachricht.
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <div class="tip">
+            <p>Toasts müssen mit JavaScript initialisiert werden:</p>
+            <pre><code>var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+var toastList = toastElList.map(function (toastEl) {
+    return new bootstrap.Toast(toastEl)
+})
+toastList.forEach(toast => toast.show())</code></pre>
+        </div>
+        
+        <h2>Modal-Dialoge</h2>
+        <p>Modals sind Dialog-Fenster, die über dem Hauptinhalt angezeigt werden:</p>
+        
+        <pre><code>&lt;!-- Button zum Öffnen des Modals --&gt;
+&lt;button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"&gt;
+    Modal öffnen
+&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"&gt;
+    &lt;div class="modal-dialog"&gt;
+        &lt;div class="modal-content"&gt;
+            &lt;div class="modal-header"&gt;
+                &lt;h5 class="modal-title" id="exampleModalLabel"&gt;Modal-Titel&lt;/h5&gt;
+                &lt;button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="modal-body"&gt;
+                Hier kommt der Modal-Inhalt hin.
+            &lt;/div&gt;
+            &lt;div class="modal-footer"&gt;
+                &lt;button type="button" class="btn btn-secondary" data-bs-dismiss="modal"&gt;Schließen&lt;/button&gt;
+                &lt;button type="button" class="btn btn-primary"&gt;Speichern&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <div class="important">
+            <p>Die <code>id</code> des Modals muss mit dem <code>data-bs-target</code> des Buttons übereinstimmen, der das Modal öffnet!</p>
+        </div>
+        
+        <div class="section-divider" id="utilities">Utility-Klassen</div>
+        
+        <h2>Utility-Klassen</h2>
+        <p>Bootstrap bietet viele praktische Utility-Klassen für häufige Styling-Anforderungen:</p>
+        
+        <h3>Borders</h3>
+        
+        <pre><code>&lt;!-- Rahmen hinzufügen --&gt;
+&lt;span class="border"&gt;&lt;/span&gt;
+&lt;span class="border-top"&gt;&lt;/span&gt;
+&lt;span class="border-end"&gt;&lt;/span&gt;
+&lt;span class="border-bottom"&gt;&lt;/span&gt;
+&lt;span class="border-start"&gt;&lt;/span&gt;
+
+&lt;!-- Rahmenfarben --&gt;
+&lt;span class="border border-primary"&gt;&lt;/span&gt;
+&lt;span class="border border-secondary"&gt;&lt;/span&gt;
+&lt;span class="border border-success"&gt;&lt;/span&gt;
+&lt;!-- usw. für alle Farbvarianten --&gt;
+
+&lt;!-- Rahmen entfernen --&gt;
+&lt;span class="border-0"&gt;&lt;/span&gt;
+&lt;span class="border-top-0"&gt;&lt;/span&gt;
+&lt;!-- usw. für alle Seiten --&gt;</code></pre>
+        
+        <h3>Border-Radius</h3>
+        
+        <pre><code>&lt;!-- Alle Ecken abrunden --&gt;
+&lt;div class="rounded"&gt;&lt;/div&gt;
+
+&lt;!-- Einzelne Ecken abrunden --&gt;
+&lt;div class="rounded-top"&gt;&lt;/div&gt;
+&lt;div class="rounded-end"&gt;&lt;/div&gt;
+&lt;div class="rounded-bottom"&gt;&lt;/div&gt;
+&lt;div class="rounded-start"&gt;&lt;/div&gt;
+
+&lt;!-- Rundungsgrad --&gt;
+&lt;div class="rounded-0"&gt;&lt;/div&gt;
+&lt;div class="rounded-1"&gt;&lt;/div&gt;
+&lt;div class="rounded-2"&gt;&lt;/div&gt;
+&lt;div class="rounded-3"&gt;&lt;/div&gt;
+&lt;div class="rounded-circle"&gt;&lt;/div&gt;
+&lt;div class="rounded-pill"&gt;&lt;/div&gt;</code></pre>
+        
+        <h3>Spacing (Margin und Padding)</h3>
+        <p>Format: <code>{property}{sides}-{size}</code></p>
+        
+        <ul>
+            <li>property: <code>m</code> für Margin, <code>p</code> für Padding</li>
+            <li>sides: 
+                <ul>
+                    <li><code>t</code> - top</li>
+                    <li><code>b</code> - bottom</li>
+                    <li><code>s</code> - start (links in LTR)</li>
+                    <li><code>e</code> - end (rechts in LTR)</li>
+                    <li><code>x</code> - links und rechts</li>
+                    <li><code>y</code> - oben und unten</li>
+                    <li>leer - alle 4 Seiten</li>
+                </ul>
+            </li>
+            <li>size: <code>0</code> bis <code>5</code> oder <code>auto</code></li>
+        </ul>
+        
+        <pre><code>&lt;!-- Margin-Beispiele --&gt;
+&lt;div class="m-0"&gt;Margin 0&lt;/div&gt;
+&lt;div class="m-1"&gt;Margin 1 (0.25rem = 4px)&lt;/div&gt;
+&lt;div class="m-2"&gt;Margin 2 (0.5rem = 8px)&lt;/div&gt;
+&lt;div class="m-3"&gt;Margin 3 (1rem = 16px)&lt;/div&gt;
+&lt;div class="m-4"&gt;Margin 4 (1.5rem = 24px)&lt;/div&gt;
+&lt;div class="m-5"&gt;Margin 5 (3rem = 48px)&lt;/div&gt;
+&lt;div class="mt-3"&gt;Margin-top 3&lt;/div&gt;
+&lt;div class="ms-auto"&gt;Margin-left auto (für Ausrichtung)&lt;/div&gt;
+
+&lt;!-- Padding-Beispiele --&gt;
+&lt;div class="p-3"&gt;Padding 3 (1rem = 16px)&lt;/div&gt;
+&lt;div class="pt-2 pb-3"&gt;Padding-top 2, Padding-bottom 3&lt;/div&gt;
+&lt;div class="px-3"&gt;Padding links und rechts 3&lt;/div&gt;
+&lt;div class="py-5"&gt;Padding oben und unten 5&lt;/div&gt;</code></pre>
+        
+        <div class="important">
+            <p>In Bootstrap 5 wurden <code>ml-*</code> und <code>mr-*</code> durch <code>ms-*</code> (start) und <code>me-*</code> (end) ersetzt, um RTL-Support zu verbessern!</p>
+        </div>
+        
+        <h3>Display</h3>
+        
+        <pre><code>&lt;div class="d-inline"&gt;Display inline&lt;/div&gt;
+&lt;div class="d-inline-block"&gt;Display inline-block&lt;/div&gt;
+&lt;div class="d-block"&gt;Display block&lt;/div&gt;
+&lt;div class="d-flex"&gt;Display flex&lt;/div&gt;
+&lt;div class="d-inline-flex"&gt;Display inline-flex&lt;/div&gt;
+&lt;div class="d-none"&gt;Display none&lt;/div&gt;
+
+&lt;!-- Responsive Varianten --&gt;
+&lt;div class="d-none d-md-block"&gt;Versteckt auf kleinen Geräten, sichtbar ab MD&lt;/div&gt;
+&lt;div class="d-md-none d-xl-block"&gt;Sichtbar auf kleinen, versteckt auf mittleren, sichtbar auf XL&lt;/div&gt;</code></pre>
+        
+        <h3>Flex-Utilities</h3>
+        
+        <pre><code>&lt;!-- Flex-Direction --&gt;
+&lt;div class="d-flex flex-row"&gt;...&lt;/div&gt;
+&lt;div class="d-flex flex-row-reverse"&gt;...&lt;/div&gt;
+&lt;div class="d-flex flex-column"&gt;...&lt;/div&gt;
+&lt;div class="d-flex flex-column-reverse"&gt;...&lt;/div&gt;
+
+&lt;!-- Justify Content --&gt;
+&lt;div class="d-flex justify-content-start"&gt;...&lt;/div&gt;
+&lt;div class="d-flex justify-content-end"&gt;...&lt;/div&gt;
+&lt;div class="d-flex justify-content-center"&gt;...&lt;/div&gt;
+&lt;div class="d-flex justify-content-between"&gt;...&lt;/div&gt;
+&lt;div class="d-flex justify-content-around"&gt;...&lt;/div&gt;
+&lt;div class="d-flex justify-content-evenly"&gt;...&lt;/div&gt;
+
+&lt;!-- Align Items --&gt;
+&lt;div class="d-flex align-items-start"&gt;...&lt;/div&gt;
+&lt;div class="d-flex align-items-end"&gt;...&lt;/div&gt;
+&lt;div class="d-flex align-items-center"&gt;...&lt;/div&gt;
+&lt;div class="d-flex align-items-baseline"&gt;...&lt;/div&gt;
+&lt;div class="d-flex align-items-stretch"&gt;...&lt;/div&gt;
+
+&lt;!-- Flex Wrap --&gt;
+&lt;div class="d-flex flex-nowrap"&gt;...&lt;/div&gt;
+&lt;div class="d-flex flex-wrap"&gt;...&lt;/div&gt;
+&lt;div class="d-flex flex-wrap-reverse"&gt;...&lt;/div&gt;
+
+&lt;!-- Flex-Eigenschaften für Kinder --&gt;
+&lt;div class="d-flex"&gt;
+    &lt;div class="flex-grow-1"&gt;Wächst&lt;/div&gt;
+    &lt;div class="flex-shrink-1"&gt;Schrumpft&lt;/div&gt;
+    &lt;div class="flex-fill"&gt;Füllt&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>Position</h3>
+        
+        <pre><code>&lt;div class="position-static"&gt;...&lt;/div&gt;
+&lt;div class="position-relative"&gt;...&lt;/div&gt;
+&lt;div class="position-absolute"&gt;...&lt;/div&gt;
+&lt;div class="position-fixed"&gt;...&lt;/div&gt;
+&lt;div class="position-sticky"&gt;...&lt;/div&gt;
+
+&lt;!-- Positionierung mit Top, Right, Bottom, Left --&gt;
+&lt;div class="position-absolute top-0 start-0"&gt;Oben links&lt;/div&gt;
+&lt;div class="position-absolute top-0 end-0"&gt;Oben rechts&lt;/div&gt;
+&lt;div class="position-absolute bottom-0 start-0"&gt;Unten links&lt;/div&gt;
+&lt;div class="position-absolute bottom-0 end-0"&gt;Unten rechts&lt;/div&gt;
+&lt;div class="position-absolute top-50 start-50 translate-middle"&gt;Zentriert&lt;/div&gt;</code></pre>
+        
+        <h3>Overflow</h3>
+        
+        <pre><code>&lt;div class="overflow-auto"&gt;...&lt;/div&gt;
+&lt;div class="overflow-hidden"&gt;...&lt;/div&gt;
+&lt;div class="overflow-visible"&gt;...&lt;/div&gt;
+&lt;div class="overflow-scroll"&gt;...&lt;/div&gt;</code></pre>
+        
+        <h3>Shadows</h3>
+        
+        <pre><code>&lt;div class="shadow-none"&gt;Kein Schatten&lt;/div&gt;
+&lt;div class="shadow-sm"&gt;Kleiner Schatten&lt;/div&gt;
+&lt;div class="shadow"&gt;Regulärer Schatten&lt;/div&gt;
+&lt;div class="shadow-lg"&gt;Großer Schatten&lt;/div&gt;</code></pre>
+        
+        <h3>Größe</h3>
+        
+        <pre><code>&lt;!-- Breite --&gt;
+&lt;div class="w-25"&gt;Breite 25%&lt;/div&gt;
+&lt;div class="w-50"&gt;Breite 50%&lt;/div&gt;
+&lt;div class="w-75"&gt;Breite 75%&lt;/div&gt;
+&lt;div class="w-100"&gt;Breite 100%&lt;/div&gt;
+&lt;div class="w-auto"&gt;Auto-Breite&lt;/div&gt;
+
+&lt;!-- Höhe --&gt;
+&lt;div class="h-25"&gt;Höhe 25%&lt;/div&gt;
+&lt;div class="h-50"&gt;Höhe 50%&lt;/div&gt;
+&lt;div class="h-75"&gt;Höhe 75%&lt;/div&gt;
+&lt;div class="h-100"&gt;Höhe 100%&lt;/div&gt;
+&lt;div class="h-auto"&gt;Auto-Höhe&lt;/div&gt;</code></pre>
+        
+        <div class="section-divider" id="javascript">JavaScript Komponenten</div>
+        
+        <h2>JavaScript Komponenten</h2>
+        <p>Bootstrap bietet verschiedene JavaScript-Komponenten für interaktive Funktionen:</p>
+        
+        <h3>Accordions</h3>
+        
+        <pre><code>&lt;div class="accordion" id="accordionExample"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;h2 class="accordion-header" id="headingOne"&gt;
+            &lt;button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"&gt;
+                Accordion Item #1
+            &lt;/button&gt;
+        &lt;/h2&gt;
+        &lt;div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample"&gt;
+            &lt;div class="accordion-body"&gt;
+                Hier kommt der Inhalt für das erste Item hin...
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="accordion-item"&gt;
+        &lt;h2 class="accordion-header" id="headingTwo"&gt;
+            &lt;button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"&gt;
+                Accordion Item #2
+            &lt;/button&gt;
+        &lt;/h2&gt;
+        &lt;div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample"&gt;
+            &lt;div class="accordion-body"&gt;
+                Hier kommt der Inhalt für das zweite Item hin...
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>Carousel</h3>
+        
+        <pre><code>&lt;div id="carouselExample" class="carousel slide" data-bs-ride="carousel"&gt;
+    &lt;div class="carousel-indicators"&gt;
+        &lt;button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"&gt;&lt;/button&gt;
+        &lt;button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"&gt;&lt;/button&gt;
+        &lt;button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="carousel-inner"&gt;
+        &lt;div class="carousel-item active"&gt;
+            &lt;img src="..." class="d-block w-100" alt="..."&gt;
+            &lt;div class="carousel-caption d-none d-md-block"&gt;
+                &lt;h5&gt;Erstes Slide-Label&lt;/h5&gt;
+                &lt;p&gt;Beschreibungstext für das erste Slide.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="carousel-item"&gt;
+            &lt;img src="..." class="d-block w-100" alt="..."&gt;
+            &lt;div class="carousel-caption d-none d-md-block"&gt;
+                &lt;h5&gt;Zweites Slide-Label&lt;/h5&gt;
+                &lt;p&gt;Beschreibungstext für das zweite Slide.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="carousel-item"&gt;
+            &lt;img src="..." class="d-block w-100" alt="..."&gt;
+            &lt;div class="carousel-caption d-none d-md-block"&gt;
+                &lt;h5&gt;Drittes Slide-Label&lt;/h5&gt;
+                &lt;p&gt;Beschreibungstext für das dritte Slide.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"&gt;
+        &lt;span class="carousel-control-prev-icon" aria-hidden="true"&gt;&lt;/span&gt;
+        &lt;span class="visually-hidden"&gt;Zurück&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"&gt;
+        &lt;span class="carousel-control-next-icon" aria-hidden="true"&gt;&lt;/span&gt;
+        &lt;span class="visually-hidden"&gt;Weiter&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        
+        <div class="note">
+            <p>Attribute <code>data-bs-ride="carousel"</code> startet das Carousel automatisch beim Laden der Seite.</p>
+        </div>
+        
+        <h3>Dropdown</h3>
+        
+        <pre><code>&lt;div class="dropdown"&gt;
+    &lt;button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"&gt;
+        Dropdown-Button
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"&gt;
+        &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        
+        <h3>Tabs</h3>
+        
+        <pre><code>&lt;ul class="nav nav-tabs" id="myTab" role="tablist"&gt;
+    &lt;li class="nav-item" role="presentation"&gt;
+        &lt;button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"&gt;Home&lt;/button&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item" role="presentation"&gt;
+        &lt;button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"&gt;Profile&lt;/button&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item" role="presentation"&gt;
+        &lt;button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false"&gt;Contact&lt;/button&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tab-content" id="myTabContent"&gt;
+    &lt;div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"&gt;
+        Inhalt für Home-Tab...
+    &lt;/div&gt;
+    &lt;div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"&gt;
+        Inhalt für Profile-Tab...
+    &lt;/div&gt;
+    &lt;div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"&gt;
+        Inhalt für Contact-Tab...
+    &lt;/div&gt;
+&lt;/div&gt;
